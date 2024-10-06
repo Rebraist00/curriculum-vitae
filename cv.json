@@ -1,0 +1,51 @@
+{
+  "informazioni_personali": {
+      "nome": "Alessandro",
+      "cognome": "Perillo",
+      "data_di_nascita": {
+          "giorno": 10,
+          "mese": 12,
+          "anno": 2007
+      },
+      "telefono": null,
+      "telefono_cellulare": "3518879779",
+      "indirizzo_di_posta_elettronica": "s.perillo.a.19878@ferraris.org",
+      "indirizzo_pec": null,
+      "incarico_attuale": "studente"
+  },
+  "istruzione_e_formazione": {
+      "scuola_elementare": {
+          "periodo": "2013-2018",
+          "nome_istituto": "Mary Poppins",
+          "tipo_istituto": "Istituto Paritario",
+          "qualifica_conseguita": "licenza elementare"
+      },
+      "scuola_media": {
+          "periodo": "2018-2021",
+          "nome_istituto": "Giuseppe Maria Cante",
+          "tipo_istituto": "Scuola Media Statale",
+          "qualifica_conseguita": "licenza media"
+      },
+      "scuola_superiore": {
+          "periodo": "2021-####",
+          "nome_istituto": "Galileo Ferraris",
+          "tipo_istituto": "Istituto Tecnico Industriale",
+          "qualifica_conseguita": null
+      }
+  },
+  "lingue": {
+      "madrelingua": "italiano",
+      "lingua_straniera_1": {
+          "lingua": "inglese",
+          "capacità_lettura": "buono",
+          "capacità_scrittura": "buono",
+          "capacità_orale": "buono"
+      }
+  },
+  "competenze_e_capacità_tecniche": {
+      "strumento_1": {
+          "nome_strumento": "computer",
+          "capacità_utilizzo": "buono"
+      }
+  }
+}

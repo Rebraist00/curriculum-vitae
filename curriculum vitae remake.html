@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae di Alessandro Perillo</title>
+</head>
+<body>
+    <h1>IL MIO CURRICULUM VITAE</h1>
+    <h3>Nome: <span id="nome"></span></h3>
+    <h3>Cognome: <span id="cognome"></span></h3>
+    <h3>Data di nascita: <span id="data_di_nascita"></span></h3>
+    <h3>Telefono cellulare: <span id="telefono_cellulare"></span></h3>
+    <h3>Email: <span id="indirizzo_post_elettronica"></span></h3>
+    <h3>Incarico attuale: <span id="incarico_attuale"></span></h3>
+    
+    <h2>Istruzione e Formazione</h2>
+    <h3>Scuola Elementare:</h3>
+    <p>Periodo: <span id="periodo_scuola_elementare"></span></p>
+    <p>Istituto: <span id="istituto_scuola_elementare"></span></p>
+    <p>Tipo di Istituto: <span id="tipo_istituto_scuola_elementare"></span></p>
+    <p>Qualifica Conseguida: <span id="qualifica_scuola_elementare"></span></p>
+
+    <h3>Scuola Media:</h3>
+    <p>Periodo: <span id="periodo_scuola_media"></span></p>
+    <p>Istituto: <span id="istituto_scuola_media"></span></p>
+    <p>Tipo di Istituto: <span id="tipo_istituto_scuola_media"></span></p>
+    <p>Qualifica Conseguida: <span id="qualifica_scuola_media"></span></p>
+
+    <h3>Scuola Superiore:</h3>
+    <p>Periodo: <span id="periodo_scuola_superiore"></span></p>
+    <p>Istituto: <span id="istituto_scuola_superiore"></span></p>
+    <p>Tipo di Istituto: <span id="tipo_istituto_scuola_superiore"></span></p>
+    <p>Qualifica Conseguida: <span id="qualifica_scuola_superiore"></span></p>
+
+    <h2>Lingue</h2>
+    <p>Madrelingua: <span id="madrelingua"></span></p>
+    <h3>Lingua Straniera:</h3>
+    <p>Lingua: <span id="lingua_straniera"></span></p>
+    <p>Capacità di Lettura: <span id="capacità_lettura"></span></p>
+    <p>Capacità di Scrittura: <span id="capacità_scrittura"></span></p>
+    <p>Capacità Orale: <span id="capacità_orale"></span></p>
+
+    <h2>Competenze Tecniche</h2>
+    <p>Strumento: <span id="strumento"></span></p>
+    <p>Capacità di Utilizzo: <span id="capacità_utilizzo"></span></p>
+
+    <script>
+
+        const file = "cv.json";
+
+        fetch(file)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            document.getElementById("nome").textContent = data.informazioni_personali.nome;
+            document.getElementById("cognome").textContent = data.informazioni_personali.cognome;
+            document.getElementById("data_di_nascita").textContent = `${data.informazioni_personali.data_di_nascita.giorno}/${data.informazioni_personali.data_di_nascita.mese}/${data.informazioni_personali.data_di_nascita.anno}`;
+            document.getElementById("telefono_cellulare").textContent = data.informazioni_personali.telefono_cellulare || "N/A";
+            document.getElementById("indirizzo_post_elettronica").textContent = data.informazioni_personali.indirizzo_di_posta_elettronica;
+            document.getElementById("incarico_attuale").textContent = data.informazioni_personali.incarico_attuale;
+
+            document.getElementById("periodo_scuola_elementare").textContent = data.istruzione_e_formazione.scuola_elementare.periodo;
+            document.getElementById("istituto_scuola_elementare").textContent = data.istruzione_e_formazione.scuola_elementare.nome_istituto;
+            document.getElementById("tipo_istituto_scuola_elementare").textContent = data.istruzione_e_formazione.scuola_elementare.tipo_istituto;
+            document.getElementById("qualifica_scuola_elementare").textContent = data.istruzione_e_formazione.scuola_elementare.qualifica_conseguita;
+
+            document.getElementById("periodo_scuola_media").textContent = data.istruzione_e_formazione.scuola_media.periodo;
+            document.getElementById("istituto_scuola_media").textContent = data.istruzione_e_formazione.scuola_media.nome_istituto;
+            document.getElementById("tipo_istituto_scuola_media").textContent = data.istruzione_e_formazione.scuola_media.tipo_istituto;
+            document.getElementById("qualifica_scuola_media").textContent = data.istruzione_e_formazione.scuola_media.qualifica_conseguita;
+
+            document.getElementById("periodo_scuola_superiore").textContent = data.istruzione_e_formazione.scuola_superiore.periodo;
+            document.getElementById("istituto_scuola_superiore").textContent = data.istruzione_e_formazione.scuola_superiore.nome_istituto;
+            document.getElementById("tipo_istituto_scuola_superiore").textContent = data.istruzione_e_formazione.scuola_superiore.tipo_istituto;
+            document.getElementById("qualifica_scuola_superiore").textContent = data.istruzione_e_formazione.scuola_superiore.qualifica_conseguita || "In corso";
+
+            document.getElementById("madrelingua").textContent = data.lingue.madrelingua;
+            document.getElementById("lingua_straniera").textContent = data.lingue.lingua_straniera_1.lingua;
+            document.getElementById("capacità_lettura").textContent = data.lingue.lingua_straniera_1.capacità_lettura;
+            document.getElementById("capacità_scrittura").textContent = data.lingue.lingua_straniera_1.capacità_scrittura;
+            document.getElementById("capacità_orale").textContent = data.lingue.lingua_straniera_1.capacità_orale;
+
+            document.getElementById("strumento").textContent = data.competenze_e_capacità_tecniche.strumento_1.nome_strumento;
+            document.getElementById("capacità_utilizzo").textContent = data.competenze_e_capacità_tecniche.strumento_1.capacità_utilizzo;
+        })
+    </script>
+</body>
+</html>
